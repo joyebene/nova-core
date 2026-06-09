@@ -1,0 +1,95 @@
+/* ============================================================
+   NovaCore — Animation CSS Additions
+   Add these rules to the bottom of style.css
+   ============================================================ */
+
+/* ── Word-split text reveal containers ─────────────────────── */
+.word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ── Smooth scroll (handled via JS scroll-behavior on <html>) ── */
+
+/* ── Section cinematic entry clip ───────────────────────────── */
+#about,
+#projects,
+#faq,
+#contact {
+  clip-path: inset(0% 0% 0% 0%);
+  will-change: clip-path;
+}
+
+/* ── Bento card 3D perspective ──────────────────────────────── */
+.bento-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── Project card 3D perspective ────────────────────────────── */
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── Glowing orb behind project cards ──────────────────────── */
+.project-card > div:first-child[style*="border-radius:50%"] {
+  transition: opacity 0.5s ease;
+}
+
+/* ── CTA submit pulse ring ──────────────────────────────────── */
+#contact-form button[type="submit"] {
+  isolation: isolate;
+}
+
+/* ── Cursor trail dots ──────────────────────────────────────── */
+body > div[style*="mix-blend-mode:difference"] {
+  pointer-events: none;
+}
+
+/* ── Blueprint grid parallax smoothing ─────────────────────── */
+#home.blueprint-grid {
+  background-attachment: local;
+  transition: background-position 0.1s linear;
+}
+
+/* ── FAQ velocity-reactive background ───────────────────────── */
+#faq {
+  will-change: filter;
+}
+
+/* ── Magnetic button smoothing ──────────────────────────────── */
+header a,
+#home .flex.flex-col a {
+  will-change: transform;
+}
+
+/* ── Reduce motion override ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .word,
+  .bento-card,
+  .project-card,
+  #faq,
+  #about,
+  #projects,
+  #contact {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+  }
+
+}
+
+/* ── Performance: hint GPU layers on animated elements ──────── */
+#sandbox-card,
+.bento-card,
+.project-card {
+  backface-visibility: hidden;
+}

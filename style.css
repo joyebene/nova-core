@@ -1,0 +1,69 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FDFBF7; /* Warm Editorial Alabaster/Beige */
+    color: #0E0E10; /* Obsidian Charcoal */
+    overflow-x: hidden;
+}
+.font-display {
+    font-family: 'Space Grotesk', sans-serif;
+}
+/* Noise texture overlay for a premium tactile finish */
+.noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+/* Blueprint grid styling */
+.blueprint-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(14,14,16,0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(14,14,16,0.02) 1px, transparent 1px);
+}
+.blueprint-grid-dark {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(253,251,247,0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(253,251,247,0.02) 1px, transparent 1px);
+}
+/* Hide scrollbars elegantly */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #FDFBF7;
+}
+::-webkit-scrollbar-thumb {
+    background: #0E0E10;
+    border-radius: 10px;
+}
+
+/* By default, elements are fully visible so they render immediately if JS fails. */
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* Only apply hidden starting state if the browser supports Intersection Observer */
+@media (prefers-reduced-motion: no-preference) {
+    html.js-enabled .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    html.js-enabled .reveal.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Interactive cursor */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #0E0E10;
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.25s, height 0.25s, background-color 0.25s;
+    mix-blend-mode: difference;
+    display: none;
+}
+
