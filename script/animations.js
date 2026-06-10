@@ -99,123 +99,31 @@
   }
 
   // ─────────────────────────────────────────────────────────────────────────
-  //  3. HERO SECTION — word-by-word headline reveal
-  // ─────────────────────────────────────────────────────────────────────────
-  const heroH1 = document.querySelector("#home h1");
-  if (heroH1) {
-    // Preserve the italic span by operating on text nodes carefully
-    const heroWords = splitWords(heroH1);
-    gsap.set(heroWords, { y: "100%", opacity: 0 });
-    gsap.to(heroWords, {
-      y: "0%",
-      opacity: 1,
-      duration: 0.9,
-      stagger: 0.06,
-      ease: "power3.out",
-      delay: 0.2,
-    });
-  }
-
-  // Hero paragraph fade in
-  const heroPara = document.querySelector("#home p");
-  if (heroPara) {
-    gsap.fromTo(
-      heroPara,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.85 }
-    );
-  }
-
-  // Hero CTAs stagger
-  const heroCTAs = document.querySelectorAll("#home .flex.flex-col a");
-  if (heroCTAs.length) {
-    gsap.fromTo(
-      heroCTAs,
-      { opacity: 0, y: 16 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power2.out",
-        delay: 1.1,
-      }
-    );
-  }
-
-  // Hero badge
-  const heroBadge = document.querySelector("#home .inline-flex.items-center.gap-2.bg-\\[\\#0E0E10\\]");
-  if (heroBadge) {
-    gsap.fromTo(
-      heroBadge,
-      { opacity: 0, scale: 0.85 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)", delay: 0.05 }
-    );
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  //  4. SANDBOX CARD — scale in + mouse parallax
+  //  3–5. HERO REVEAL + SANDBOX + GRAPH
+  //  Handled entirely by preloader.js (nc:preloader-done event).
+  //  animations.js only wires the persistent mouse-parallax tilt.
   // ─────────────────────────────────────────────────────────────────────────
   const sandboxCard = document.getElementById("sandbox-card");
-  if (sandboxCard) {
-    gsap.fromTo(
-      sandboxCard,
-      { scale: 0.88, opacity: 0, y: 30 },
-      {
-        scale: 1,
-        opacity: 1,
-        y: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        delay: 0.5,
-      }
-    );
-
-    // 3D tilt on mouse move
-    heroSection &&
-      heroSection.addEventListener("mousemove", (e) => {
-        const rect = sandboxCard.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) / (rect.width / 2);
-        const dy = (e.clientY - cy) / (rect.height / 2);
-        gsap.to(sandboxCard, {
-          rotationY: dx * 8,
-          rotationX: -dy * 6,
-          transformPerspective: 900,
-          duration: 0.6,
-          ease: "power2.out",
-        });
+  if (sandboxCard && heroSection) {
+    heroSection.addEventListener("mousemove", (e) => {
+      const rect = sandboxCard.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+      gsap.to(sandboxCard, {
+        rotationY: dx * 8,
+        rotationX: -dy * 6,
+        transformPerspective: 900,
+        duration: 0.6,
+        ease: "power2.out",
       });
-
-    heroSection &&
-      heroSection.addEventListener("mouseleave", () => {
-        gsap.to(sandboxCard, {
-          rotationY: 0,
-          rotationX: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        });
-      });
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  //  5. PERFORMANCE GRAPH SVG — draw path on load
-  // ─────────────────────────────────────────────────────────────────────────
-  const perfPath = document.querySelector("#sandbox-card svg path");
-  if (perfPath) {
-    const length = perfPath.getTotalLength
-      ? perfPath.getTotalLength()
-      : 200;
-    gsap.set(perfPath, {
-      strokeDasharray: length,
-      strokeDashoffset: length,
     });
-    gsap.to(perfPath, {
-      strokeDashoffset: 0,
-      duration: 1.6,
-      ease: "power2.inOut",
-      delay: 1.2,
+    heroSection.addEventListener("mouseleave", () => {
+      gsap.to(sandboxCard, {
+        rotationY: 0, rotationX: 0,
+        duration: 0.8, ease: "power2.out",
+      });
     });
   }
 
@@ -624,27 +532,11 @@
   }
 
   // ─────────────────────────────────────────────────────────────────────────
-  //  14. SECTION ENTRY TRANSITIONS (cinematic scene-by-scene)
+  //  14. SECTION ENTRY TRANSITIONS — opacity + translateY (no clip-path)
+  //  clip-path on block-level sections blocks scroll events; removed.
   // ─────────────────────────────────────────────────────────────────────────
-  const sections = ["#about", "#projects", "#faq", "#contact"];
-  sections.forEach((sel) => {
-    const sec = document.querySelector(sel);
-    if (!sec) return;
-    gsap.fromTo(
-      sec,
-      { clipPath: "inset(8% 0% 0% 0%)" },
-      {
-        clipPath: "inset(0% 0% 0% 0%)",
-        ease: "power3.out",
-        duration: 1.1,
-        scrollTrigger: {
-          trigger: sec,
-          start: "top 92%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-  });
+  // (section transitions are already handled per-element by the bento/project
+  //  card stagger animations above — no additional wrapper animation needed)
 
   // ─────────────────────────────────────────────────────────────────────────
   //  15. COUNTER ANIMATIONS (hero sandbox card + any future counters)

@@ -16,14 +16,8 @@
 
 /* ── Smooth scroll (handled via JS scroll-behavior on <html>) ── */
 
-/* ── Section cinematic entry clip ───────────────────────────── */
-#about,
-#projects,
-#faq,
-#contact {
-  clip-path: inset(0% 0% 0% 0%);
-  will-change: clip-path;
-}
+/* ── Section cinematic entry — NO clip-path (breaks scroll) ── */
+/* clip-path removed; section transitions use opacity+y instead */
 
 /* ── Bento card 3D perspective ──────────────────────────────── */
 .bento-card {
@@ -81,7 +75,6 @@ header a,
     animation: none !important;
     transition: none !important;
     transform: none !important;
-    clip-path: none !important;
     filter: none !important;
   }
 

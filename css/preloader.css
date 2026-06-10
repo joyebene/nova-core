@@ -1,0 +1,151 @@
+/* ============================================================
+   NovaCore — Cinematic Preloader + Split Door CSS
+   Add <link rel="stylesheet" href="preloader.css"> in <head>,
+   BEFORE animations.css
+   ============================================================ */
+
+/* ── Prevent FOUC: hide body until preloader fires ─────────── */
+body:not(.nc-preloader-done) {
+  /* overflow: hidden; */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PRELOADER OVERLAY
+───────────────────────────────────────────────────────────── */
+#nc-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #0E0E10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  pointer-events: all;
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+#nc-logo-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nc-logo-img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  /* Invert logo to white on dark background */
+  filter: invert(1) brightness(2);
+}
+
+#nc-logo-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,251,247,0.35) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Brand name ────────────────────────────────────────────── */
+#nc-brand-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(18px, 4vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: #FDFBF7;
+  text-transform: uppercase;
+  display: flex;
+  gap: 0;
+}
+
+#nc-brand-name .nc-gap {
+  width: 0.6em;
+  display: inline-block;
+}
+
+/* ── Tagline ───────────────────────────────────────────────── */
+#nc-tagline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 400;
+  color: rgba(253,251,247,0.45);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: -8px;
+}
+
+/* ── Progress bar ──────────────────────────────────────────── */
+#nc-progress-track {
+  width: min(240px, 60vw);
+  height: 1px;
+  background: rgba(253,251,247,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+#nc-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: rgba(253,251,247,0.7);
+  transform-origin: left center;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SPLIT DOOR PANELS
+───────────────────────────────────────────────────────────── */
+.nc-door {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 9999;
+  background: #0E0E10;
+  pointer-events: none;
+  will-change: transform;
+}
+
+#nc-door-left  { left: 0; }
+#nc-door-right { right: 0; }
+
+/* Light seam between the two doors */
+#nc-door-seam {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  z-index: 10000;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(253,251,247,0.06) 20%,
+    rgba(253,251,247,0.18) 50%,
+    rgba(253,251,247,0.06) 80%,
+    transparent 100%
+  );
+  pointer-events: all;
+  will-change: opacity;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   REDUCE MOTION — skip everything
+───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  #nc-preloader,
+  #nc-door-left,
+  #nc-door-right,
+  #nc-door-seam {
+    display: none !important;
+  }
+}
