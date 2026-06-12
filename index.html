@@ -56,6 +56,8 @@
                     class="hover-target text-[#0E0E10]/70 hover:text-[#0E0E10] transition-colors relative py-1">About</a>
                 <a href="#projects"
                     class="hover-target text-[#0E0E10]/70 hover:text-[#0E0E10] transition-colors relative py-1">Projects</a>
+                <a href="#testimonials"
+                    class="hover-target text-[#0E0E10]/70 hover:text-[#0E0E10] transition-colors relative py-1">Testimonials</a>
                 <a href="#faq"
                     class="hover-target text-[#0E0E10]/70 hover:text-[#0E0E10] transition-colors relative py-1">FAQ</a>
                 <a href="#contact"
@@ -82,7 +84,7 @@
         </div>
 
         <div id="mobile-menu"
-            class="fixed inset-y-0 right-0 w-full max-w-sm bg-[#FDFBF7] shadow-2xl z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-between p-8 border-l border-neutral-200">
+            class="fixed inset-y-0 right-0 w-full max-w-sm bg-[#FDFBF7] h-screen backdrop-blur-xl shadow-2xl z-[999] transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-between p-8 border-l border-neutral-200">
             <div>
                 <!-- Cancel Close Button inside Menu Panel -->
                 <div class="flex items-center justify-between mb-12">
@@ -99,8 +101,10 @@
                     <a href="#about" class="mobile-nav-link hover:text-neutral-500 transition-colors">02. About</a>
                     <a href="#projects" class="mobile-nav-link hover:text-neutral-500 transition-colors">03.
                         Projects</a>
-                    <a href="#faq" class="mobile-nav-link hover:text-neutral-500 transition-colors">04. FAQ</a>
-                    <a href="#contact" class="mobile-nav-link hover:text-neutral-500 transition-colors">05. Contact</a>
+                    <a href="#testimonials" class="mobile-nav-link hover:text-neutral-500 transition-colors">04.
+                        Testimonials</a>
+                    <a href="#faq" class="mobile-nav-link hover:text-neutral-500 transition-colors">05. FAQ</a>
+                    <a href="#contact" class="mobile-nav-link hover:text-neutral-500 transition-colors">06. Contact</a>
                 </nav>
             </div>
             <div class="pt-8 border-t border-neutral-200">
@@ -275,7 +279,7 @@
                 <div class="max-w-xl">
                     <span
                         class="text-xs font-bold text-neutral-400 tracking-wider uppercase flex items-center gap-2 mb-2">
-                        <span class="w-1.5 h-1.5 bg-[#0E0E10] rounded-full"></span> 01 / Who we are
+                        <span class="w-1.5 h-1.5 bg-[#0E0E10] rounded-full"></span> 02 / Who we are
                     </span>
                     <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#0E0E10]">
                         High-quality software, built by friendly humans.
@@ -394,7 +398,7 @@
                 <div>
                     <span
                         class="text-xs font-bold text-neutral-500 tracking-wider uppercase flex items-center gap-2 mb-2">
-                        <span class="w-1.5 h-1.5 bg-[#FDFBF7] rounded-full"></span> 02 / Our Outputs
+                        <span class="w-1.5 h-1.5 bg-[#FDFBF7] rounded-full"></span> 03 / Our Outputs
                     </span>
                     <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight">
                         Some things we've built
@@ -587,12 +591,88 @@
         </div>
     </section>
 
+    <!-- testimonials -->
+
+    <section id="testimonials" class="py-24 lg:py-32 px-6 lg:px-12 bg-neutral-50 border-t border-neutral-200">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-16">
+                <span class="text-xs font-bold text-neutral-400 tracking-wider uppercase flex items-center gap-2 mb-2">
+                    <span class="w-1.5 h-1.5 bg-[#0E0E10] rounded-full"></span> 04 / Testimonials
+                </span>
+                <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#0E0E10]">
+                    What Our Clients Say
+                </h2>
+                <p class="text-md sm:text-lg text-neutral-500 mt-4 font-light leading-relaxed">
+                    We're proud to have worked with amazing people. Here's what they think of our collaboration.
+                </p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial Card 1 -->
+                <div
+                    class="reveal bento-card bg-white p-8 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex-grow">
+                        <p class="text-neutral-600 font-light mb-6 leading-relaxed">"Nova Core transformed our vision
+                            into a reality. Their attention to detail and commitment to quality is unmatched. The final
+                            product was not only beautiful but also incredibly performant."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 border-t border-neutral-200">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1"
+                            class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-[#0E0E10]">John Doe</h4>
+                            <p class="text-xs text-neutral-500">CEO, Tech Innovators</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 2 -->
+                <div
+                    class="reveal bento-card bg-white p-8 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex-grow">
+                        <p class="text-neutral-600 font-light mb-6 leading-relaxed">"Working with the Nova Core team was
+                            a breeze. They are true professionals who listen to your needs and deliver exceptional
+                            results. I couldn't be happier with our new website."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 border-t border-neutral-200">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2"
+                            class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-[#0E0E10]">Jane Smith</h4>
+                            <p class="text-xs text-neutral-500">Marketing Director, Creative Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 3 -->
+                <div
+                    class="reveal bento-card bg-white p-8 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="flex-grow">
+                        <p class="text-neutral-600 font-light mb-6 leading-relaxed">"The level of creativity and
+                            technical expertise at Nova Core is outstanding. They provided a seamless experience from
+                            start to finish and delivered a product that exceeded all our expectations."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 border-t border-neutral-200">
+                        <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Client 3"
+                            class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-[#0E0E10]">Sam Wilson</h4>
+                            <p class="text-xs text-neutral-500">Founder, Bright Ideas Co.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="faq" class="py-24 lg:py-32 px-6 lg:px-12 bg-[#FDFBF7] scroll-mt-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
             <!-- FAQ Left Sidebar Header Info -->
             <div class="reveal lg:col-span-5 flex flex-col space-y-4">
                 <span class="text-xs font-bold text-neutral-400 tracking-wider uppercase flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-[#0E0E10] rounded-full"></span> 03 / Common questions
+                    <span class="w-1.5 h-1.5 bg-[#0E0E10] rounded-full"></span> 04 / Common questions
                 </span>
                 <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#0E0E10]">
                     Frequently asked queries
@@ -691,7 +771,7 @@
             <div class="reveal lg:col-span-5 flex flex-col justify-between space-y-12">
                 <div class="space-y-4">
                     <span class="text-xs font-bold text-neutral-500 tracking-wider uppercase flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 bg-[#FDFBF7] rounded-full"></span> 04 / Say Hello
+                        <span class="w-1.5 h-1.5 bg-[#FDFBF7] rounded-full"></span> 06 / Say Hello
                     </span>
                     <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight leading-[1.05]">
                         Let's build something beautiful together!

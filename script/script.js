@@ -68,11 +68,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// --- 3. Mobile Navigation Drawer Panel Interactions ---
+
 // --- 3. Mobile Navigation Drawer Panel Interactions ---
 function openMenu() {
     if (mobileMenu) mobileMenu.classList.remove('translate-x-full');
-    // Add this line to prevent the page from scrolling
     document.body.classList.add('overflow-hidden');
 }
 function closeMenu() {
